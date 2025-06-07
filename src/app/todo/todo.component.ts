@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Todo } from '../shared/models/todo.model';
 import { TodoService } from '../shared/services/todo.service';
 import jsPDF from 'jspdf';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-todo',
@@ -43,18 +44,39 @@ export class TodoComponent implements OnInit {
   }
 
   clearAll() {
-    if (this.todos.length > 0 && confirm('Are you sure you want to clear all tasks?')) {
-      this.todoService.clearAll();
-      this.loadTodos();
-    }
-  }
+    if (this.todos.length === 0) return;
+
+    Swal.fire({
+      title: 'Tem certeza que deseja apagar todas as tarefas?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#228B22',
+      cancelButtonColor: 'red',
+      confirmButtonText: 'Sim',
+      cancelButtonText: 'Cancelar'
+    }).then(result => {
+      if (result.isConfirmed) {
+        this.todoService.clearAll();
+        this.loadTodos();
+      }
+    });
+ }
 
   clearCompletedTasks() {
-    const confirmarLimpeza = confirm('Tem certeza que deseja apagar todas as tarefas concluídas?');
-    if(confirmarLimpeza) {
-      this.todoService.clearCompletedTasks();
+    Swal.fire({
+      title: 'Tem certeza que deseja apagar todas as tarefas concluídas?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#228B22',
+      cancelButtonColor: 'red',
+      confirmButtonText: 'Sim',
+      cancelButtonText: 'Cancelar'
+    }).then(result => {
+      if (result.isConfirmed) {
+        this.todoService.clearCompletedTasks();
       this.loadTodos();
-    }
+      }
+    });
   }
 
   toggleCompletedTasks() {
