@@ -6,10 +6,9 @@
       class="new-task_input"
       type="text"
       [(ngModel)]="newTaskTitle"
+      (keydown.enter)="addTask()"
       placeholder="Descreva aqui de forma breve a sua tarefa."
     />
   </div>
-  <button class="new-task_button" (click)="addTask()">
-    Salvar
-  </button>
+  <button class="new-task_button" (click)="addTask()">Salvar</button>
 </div>
