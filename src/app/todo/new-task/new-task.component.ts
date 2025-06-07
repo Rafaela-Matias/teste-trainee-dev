@@ -18,13 +18,21 @@ export class NewTaskComponent {
       this.showError = true;
       return;
     }
-    const newTodo: Todo = {
-      id: this.todoService.getTodoNewId(),
-      title: this.newTaskTitle,
-      completed: false
-    };
 
-    this.todoService.addTodo(newTodo);
+    const titles = this.newTaskTitle.split('|');
+
+    titles.forEach(title => {
+      const cleanTitle = title.trim();
+      if(cleanTitle){
+        const newTodo: Todo = {
+        id: this.todoService.getTodoNewId(),
+        title: cleanTitle,
+        completed: false
+       };
+       this.todoService.addTodo(newTodo);
+      }
+    });
+
     this.newTaskTitle = '';
   }
 }
