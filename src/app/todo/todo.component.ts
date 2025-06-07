@@ -49,8 +49,11 @@ export class TodoComponent implements OnInit {
   }
 
   clearCompletedTasks() {
-    this.todoService.clearCompletedTasks();
-    this.loadTodos();
+    const confirmarLimpeza = confirm('Tem certeza que deseja apagar todas as tarefas concluídas?');
+    if(confirmarLimpeza) {
+      this.todoService.clearCompletedTasks();
+      this.loadTodos();
+    }
   }
 
   toggleCompletedTasks() {
