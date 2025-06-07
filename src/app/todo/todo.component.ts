@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../shared/models/todo.model';
 import { TodoService } from '../shared/services/todo.service';
+import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-todo',
@@ -72,5 +73,22 @@ export class TodoComponent implements OnInit {
 
   ordemAlfabetica() {
     this.todos.sort((a, b) => a.title.localeCompare(b.title));
+  }
+
+  exportarPDF() {
+    const doc = new jsPDF();
+    doc.setFontSize(16);
+    doc.text('Lista de Tarefas', 85, 10);
+
+    const tarefas = this.filteredTodos();
+    let y = 30;
+
+    tarefas.forEach((todo) => {
+      const status = todo.completed ? '[X]' : '[ ]';
+      doc.text(`${status} ${todo.title}`, 10, y);
+      y+=10;
+    });
+
+    doc.save('Lista_de_Tarefas.pdf');
   }
 }
