@@ -9,10 +9,15 @@ import { TodoService } from '../../shared/services/todo.service';
 })
 export class NewTaskComponent {
   newTaskTitle: string = '';
+  showError: boolean = false;
 
   constructor(private todoService: TodoService) { }
 
   addTask() {
+    if(!this.newTaskTitle.trim()) {
+      this.showError = true;
+      return;
+    }
     const newTodo: Todo = {
       id: this.todoService.getTodoNewId(),
       title: this.newTaskTitle,
