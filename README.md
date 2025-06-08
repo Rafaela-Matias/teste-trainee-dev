@@ -10,7 +10,7 @@ Além da correção de bugs, foram implementadas novas funcionalidades, como um 
 
 ---
 
-## 2. Como Executar a Aplicação: Instruções claras para clonar, instalar e rodar o projeto (npm install, npm start).
+## 2. Como Executar a Aplicação:
 
 ### 2.1 Para clonar um repositório : abra o Git Bash dentro da pasta que desejar e digite " git clone + URL do projeto no GitHub por exemplo "git clone https://github.com/seu-usuario/nome-do-repositorio.git" e aperte enter.
 
@@ -20,7 +20,7 @@ Além da correção de bugs, foram implementadas novas funcionalidades, como um 
 
 ---
 
-## 3. Correção dos Erros Iniciais (npm start): Descreva quais eram os erros que impediam a aplicação de rodar e como você os solucionou.
+## 3. Correção dos Erros Iniciais (npm start):
 
 ### 3.1 Erro de escrita:
 
@@ -48,7 +48,7 @@ Solução: Instalar a biblioteca por meio do comando “ npm install @fortawesom
 
 ---
 
-## 4. Relatório de Correção de Bugs: Para cada bug da lista, explique a causa raiz e a solução que você implementou.
+## 4. Relatório de Correção de Bugs: 
 
 ### 4.1 Tarefa duplicada ao salvar:
 
@@ -112,7 +112,7 @@ Solução: Adicionar uma condicional if com !this.newTaskTitle.trim() para imped
 
 ---
 
-## 5. Relatório de Implementação de Melhorias: Para cada melhoria, descreva sua abordagem técnica e quais bibliotecas foram utilizadas.
+## 5. Relatório de Implementação de Melhorias:
 
 ### 5.1 Implementar um botão “Ordenar de A a Z” que ordena a lista alfabeticamente.
 
@@ -146,7 +146,7 @@ Abordagem Técnica: Em todo.component.ts os métodos clearAll( ) e clearComplete
 
 ---
 
-## 6. Relatório de Débito Técnico: Para cada ítem da lista de bugs e melhorias que você não conseguiu resolver ou implementar, descreva quais foram as dificuldades que você enfrentou na qual fizeram com que você não tenha conseguido entregar.
+## 6. Relatório de Débito Técnico:
 
 ### 6.1 Bug = Correção do botão “Editar”
 
@@ -160,7 +160,7 @@ O botão “Editar” não está funcional. O comportamento esperado é: ao clic
 
 ---
 
-## 7. Relatório de Melhorias: Descreva quais melhorias (novas funcionalidades) você acha interessante que sejam implementadas para evoluir o sistema.
+## 7. Relatório de Melhorias:
 
 ### 7.1 Adicionar a função de ordenar por data de conclusão ou criação para um maior controle.
 
