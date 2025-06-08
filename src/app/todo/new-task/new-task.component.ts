@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Todo } from '../../shared/models/todo.model';
 import { TodoService } from '../../shared/services/todo.service';
+import { Filter } from 'bad-words';
 
 @Component({
   selector: 'app-new-task',
@@ -9,17 +10,37 @@ import { TodoService } from '../../shared/services/todo.service';
 })
 export class NewTaskComponent {
   newTaskTitle: string = '';
-  showError: boolean = false;
+  showProfanityError: boolean = false;
 
   constructor(private todoService: TodoService) { }
 
   addTask() {
-    if(!this.newTaskTitle.trim()) {
-      this.showError = true;
-      return;
-    }
+    this.showProfanityError = false;
+
+    const filter = new Filter()
+    filter.addWords(
+      'Merda',
+      'Merdas',
+      'Porra',
+      'Caralho',
+      'Puta',
+      'Cacete', 
+      'Viado',
+      'Fudeu',
+      'Bosta',
+      'Foda',
+      'escroto'
+    );
 
     const titles = this.newTaskTitle.split('|');
+
+    for(const title of titles){
+      const cleanTitle = title.trim();
+      if(cleanTitle && filter.isProfane(cleanTitle)){
+        this.showProfanityError = true;
+        return;
+      }
+    }
 
     titles.forEach(title => {
       const cleanTitle = title.trim();
